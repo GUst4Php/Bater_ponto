@@ -6,8 +6,8 @@ function DB_funcionarios()
 {
     $host = '127.0.0.1';
     $db = 'nexu';
-    $user = 'admin';
-    $password = '0000';
+    $user = 'root';
+    $password = '';
 
     try {
         $dsn = "mysql:host=$host;dbname=$db;charset=utf8mb4";
@@ -27,7 +27,7 @@ function salarioHora(float $salario, int $horas): float
     return $salariohora;
 }
 
-function salarioFuncionario(FuncionarioRepository $funcionarioRepo): float
+function salarioFuncionario(FuncionarioRepository $funcionarioRepo, Funcionario $funcionario): float
 {
     $funcionario = $funcionarioRepo->__getDadosFuncionario($funcionario);
     $salarioHora = salarioHora($funcionario->__getSalario(), $funcionario->__getHoras());

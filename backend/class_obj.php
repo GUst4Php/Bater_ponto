@@ -42,7 +42,7 @@ class Funcionario
     {
         $this->salario = $salario;
     }
-    private function __SetHoras(int $horas)
+    private function __setHoras(int $horas)
     {
         $this->horas = $horas;
     }
@@ -80,7 +80,7 @@ class Funcionario
     {
         return $this->nivel;
     }
-    public function __getAtvivo()
+    public function __getAtivo()
     {
         return $this->ativo;
     }
@@ -93,11 +93,8 @@ class Funcionario
 //e um objeto funcionário para manipular os dados
 class FuncionarioRepository
 {
-    public function __construct(Funcionario $funcionario, protected PDO $conexao)
-    {
-        $conexao = $this->conexao;
-        $funcionario = $funcionario;
-    }
+
+    public function __construct(protected PDO $conexao) {}
 
     //função de cadastro de funcionário
     //retorna true se cadastrado com sucesso, false se falhar
@@ -113,7 +110,7 @@ class FuncionarioRepository
                 ':salario' => $funcionario->__getSalario(),
                 ':horas' => $funcionario->__getHoras(),
                 ':nivel' => $funcionario->__getNivel(),
-                ':ativo' => $funcionario->__getAtvivo()
+                ':ativo' => $funcionario->__getAtivo()
             ]);
             return True;
         } else {
@@ -126,7 +123,7 @@ class FuncionarioRepository
     public function InativarFuncionario(Funcionario $funcionario): bool
     {
         $nome = $funcionario->__getNome();
-        $query = "update funcionarios set ativo = 0 qhere nome = :nome";
+        $query = "update funcionarios set ativo = 0 where nome = :nome";
         if ($this->conexao) {
             $stmt = $this->conexao->prepare($query);
             $stmt->execute([':nome' => $nome]);
@@ -148,6 +145,9 @@ class FuncionarioRepository
             $stmt = $this->conexao->prepare($query);
             $stmt->execute([':nome' => $nome]);
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if (!$result) {
+                throw new Exception("Funcionário não encontrado.");
+            }
             $funcionario = new Funcionario(
                 $result['nome'],
                 $result['email'],
@@ -176,7 +176,7 @@ class FuncionarioRepository
                 ':salario' => $funcionario->__getSalario(),
                 ':horas' => $funcionario->__getHoras(),
                 ':nivel' => $funcionario->__getNivel(),
-                ':ativo' => $funcionario->__getAtvivo()
+                ':ativo' => $funcionario->__getAtivo()
             ]);
             return True;
         } else {
