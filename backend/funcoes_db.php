@@ -27,9 +27,9 @@ function salarioHora(float $salario, int $horas): float
     return $salariohora;
 }
 
-function salarioFuncionario(FuncionarioRepository $funcionarioRepo, Funcionario $funcionario): float
+function salarioFuncionario(FuncionarioRepository $funcionarioRepo, $nome): float
 {
-    $funcionario = $funcionarioRepo->__getDadosFuncionario($funcionario);
+    $funcionario = $funcionarioRepo->__getDadosFuncionario($nome);
     $salarioHora = salarioHora($funcionario->__getSalario(), $funcionario->__getHoras());
     $salario = $salarioHora * $funcionario->__getHoras();
 

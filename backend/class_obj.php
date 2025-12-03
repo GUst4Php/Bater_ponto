@@ -136,10 +136,8 @@ class FuncionarioRepository
     //função de consulta de funcionário
     //retorna um objeto funcionário com os dados preenchidos
 
-    public function __getDadosFuncionario(Funcionario $funcionario): Funcionario
+    public function __getDadosFuncionario(string $nome): Funcionario
     {
-
-        $nome = $funcionario->__getNome();
         $query = "select * from funcionarios where nome = :nome";
         if ($this->conexao) {
             $stmt = $this->conexao->prepare($query);
@@ -183,4 +181,30 @@ class FuncionarioRepository
             return False;
         }
     }
+
+    protected function __getBuscarFuncionario(string $nome): Funcionario|bool {
+        $query = "select * from funcionarios where nome = :nome";
+        if ($this->conexao) {
+            $stmt = $this->conexao->prepare($query);
+            $stmt->execute([':nome' => $nome]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($result) {
+                $funcionario = new Funcionario(
+                    $result['nome'],
+                    $result['email'],
+                    $result['telefone'],
+                    $result['salario'],
+                    $result['horas'],
+                    $result['nivel'],
+                    $result['ativo']
+                );
+                return $funcionario;
+            } else {
+                return False;
+            }
+        } else {
+            return False;
+        }
+    }
+    
 }
