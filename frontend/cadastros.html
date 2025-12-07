@@ -4,20 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/img/nexu-logo.jpeg" type="image/jpeg">
-    <link rel="stylesheet" href="cadastros.css">
-    <title>Cadastros</title>
+    <link rel="stylesheet" href="funcionarios.css">
+    <title>Funcionarios</title>
 </head>
 <body>
     <header>
         <nav class="navbar">
             <ul>
-                <li><a href="#">Funcionários</a></li>
+                <li><a href="#" id="opc-atual">Funcionários</a></li>
                 <li><a href="#">Relatorios</a></li>
                 <li><a href="#">Funcionalidades</a></li>
                 <li><a href="#">Pontos</a></li>
             </ul>
         </nav>
     </header>
-    
+        <section>
+            <div class="opcoes-funcionarios">
+                <ul>
+                    <li><button id="cadastro">Cadastros</button></li>
+                    <li><button id="editar_func">Edições</button></li>
+                    <li><button>Pesquisar</button></li>
+                </ul>
+            </div>
+            <div id="cadastro-funcionarios">
+                <br><br>
+                <form action="../backend/cadastro_func.php" method="post" id="formulario">
+
+                    <h1>Cadastros de Funcionários</h1>
+                    <br><br>
+                    <label for="nome"></label>
+                    <input type="text" id="nome" name="nome" placeholder="Nome Completo" required>
+                    <br><br>
+                    <label for="email"></label>
+                    <input type="email" id="email" name="email" placeholder="exemplo@gmail.com" required>
+                    <br><br>
+                    <label for = "telefone" ></label>
+                    <input type="tel" id="telefone" name="telefone" placeholder="(99) 99999-9999" required>
+                    <br><br>
+                    <label for="salario"></label> </label>
+                    <input type="text" id="salario" name="salario" placeholder="R$ xxxxx,xx" required>
+                    <br><br>
+                    <label for="Horas"></label>
+                    <input type="text" id="Horas" name="Horas" placeholder="Horas Mensais" required>
+                    <br><br>
+                    <label for="Nivel"></label>
+                    <select name="Nivel" id="Nivel">
+                        <option value="1"> Funcionário </option>
+                        <option value="2"> RH </option>
+                        <option value="3"> Líder </option>
+                    </select>
+                    <br><br>
+                    <radio-group>
+                    <label for="Ativo"> Ativo:       </label>
+                    <input type="radio" id="ativo-sim" name="Ativo" value="True" checked>
+                    <label for="ativo-sim">    Sim </label>
+                    <input type="radio" id="ativo-nao" name="Ativo" value="False">
+                    <label for="ativo-nao">    Não </label>
+                    <br><br>
+                    <input type="submit" value="Cadastrar">
+                </form>
+            </div>
+        </section>
+    <script src="cadastro.js"></script>
 </body>
 </html>

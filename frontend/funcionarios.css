@@ -1,0 +1,151 @@
+body{
+    background-color: aqua;
+    top:0;
+    margin:0;
+    height: 100%;
+    width: 100%;
+}
+
+header{
+    top:0;
+    margin:0;
+    display: flex;
+    width: 100%;
+    height: 80px;
+    background-color: #333;
+    align-items: center;
+    justify-content: center;
+}
+.navbar ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.navbar ul li{
+    float: left;
+}
+.navbar ul li a{
+    margin: 0 100px 0 100px;
+    display: block;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.navbar ul li a:hover{
+    background-color: #111;
+}
+/* Marcar que a opção atual é a de funcionários e dar um destaque a ela*/
+.navbar ul li a#opc-atual{
+    border-bottom: aqua 1px solid ;
+    color: aqua;
+
+}
+
+/* Estilo do Container de Opções de Funcionários */
+.opcoes-funcionarios{
+    top: 100px;
+    left: 500px;;
+    height: 100px;
+    display: flex;
+    text-align: center;
+    position: absolute;
+    justify-content: center;
+}
+
+ .opcoes-funcionarios ul li{
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    display: inline-block;
+} 
+
+/* Estilo Padrão do Botão */
+.opcoes-funcionarios ul li button{
+
+    margin-top: 20px;
+    margin-left: 20px;
+    display: inline-block;
+    width: 250px;
+    height: 50px;
+    font-size: 18px;
+    background-color: #333;
+    border: 2px solid aqua;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+}
+.opcoes-funcionarios ul li button:hover{
+    background-color: white;
+    color: #333;
+}
+
+.opcoes-funcionarios ul li button.clicked{
+    background-color: aqua;
+    color: white;
+}
+#cadastro{
+    background-color: #333;
+    color: aqua;
+}
+#cadastro:hover{
+    background-color: white;
+    color: #333;
+    font-weight: bold;
+}
+
+/*Estilo da div de cadastro de funcionários*/
+#cadastro-funcionarios{
+    border-radius: 25px;
+    justify-content: center;
+    top:300px;
+    left:25%;
+    display: flex;
+    position: absolute;
+    width: 50%;
+    height: 600px;
+    background-color: white;
+}
+#formulario{
+    display: flex;
+    flex-direction: column;
+
+    width: 50%;
+
+    margin-bottom: 20px;
+}
+#formulario h1{
+    text-align: center;
+    color: #333;
+}
+#formulario input, #formulario select{
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #333;
+    display: flex;
+    height: 30px;
+    margin: 5px 0 15px 0;
+}
+#formulario radio-group{
+    display: flex;
+    position: relative;
+    margin: 0px 10px 0px 10px;
+    gap: 20px;
+    align-items: center;
+}
+#formulario input[type="submit"]{
+    display: inline;
+    position: absolute;
+    justify-content: center;
+    top: 60px;
+    left: 35%;
+    background-color: #333;
+    color: white;
+    border: none;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+}
+

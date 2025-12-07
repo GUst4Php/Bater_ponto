@@ -32,7 +32,7 @@ class Funcionario
     }
     private function __setEmail(string $email)
     {
-        $this->email = $email;
+        $this->email = filter_var($email, FILTER_VALIDATE_EMAIL);
     }
     private function __setTelefone(string $telefone)
     {
@@ -98,7 +98,7 @@ class FuncionarioRepository
 
     //função de cadastro de funcionário
     //retorna true se cadastrado com sucesso, false se falhar
-    public function cadastrar(Funcionario $funcionario): bool
+    public function cadastrarFuncionario(Funcionario $funcionario): bool
     {
         $sql = "INSERT INTO funcionarios (nome, email, telefone, salario, horas, nivel, ativo) VALUES (:nome, :email, :telefone, :salario, :horas, :nivel, :ativo)";
         if ($this->conexao) {
@@ -182,11 +182,12 @@ class FuncionarioRepository
         }
     }
 
-    protected function __getBuscarFuncionario(string $nome): Funcionario|bool {
-        $query = "select * from funcionarios where nome = :nome";
+    protected function __getBuscarFuncionario(string $nome): Funcionario|bool
+    {
+        $query = "select * from funcionarios where nome  like :nome ";
         if ($this->conexao) {
             $stmt = $this->conexao->prepare($query);
-            $stmt->execute([':nome' => $nome]);
+            $stmt->execute([':nome' => "%$nome%"]);
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($result) {
                 $funcionario = new Funcionario(
@@ -206,5 +207,4 @@ class FuncionarioRepository
             return False;
         }
     }
-    
 }

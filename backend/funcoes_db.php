@@ -5,7 +5,7 @@ require './class_obj.php';
 function DB_funcionarios()
 {
     $host = '127.0.0.1';
-    $db = 'nexu';
+    $db = 'Nexu';
     $user = 'root';
     $password = '';
 
@@ -34,4 +34,14 @@ function salarioFuncionario(FuncionarioRepository $funcionarioRepo, $nome): floa
     $salario = $salarioHora * $funcionario->__getHoras();
 
     return $salario;
+}
+
+//Função para formatar o salário no padrão brasileiro
+function formatarSalario(string $salario): float
+{
+    // Substitui a vírgula decimal por ponto decimal
+    $salario = str_replace(',', '.', $salario);
+
+    // Converte para float
+    return floatval($salario);
 }
