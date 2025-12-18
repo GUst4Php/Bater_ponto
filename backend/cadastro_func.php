@@ -15,6 +15,7 @@ $ativo = ($_POST['Ativo']);
 //Validando os dados recebidos
 if (empty($nome) || empty($email) || empty($telefone) || empty($salario) || empty($horas) || empty($nivel)) {
     die("Erro: Todos os campos são obrigatórios.");
+    header("location:../frontend/pages/cadastros.html");
 }
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     die("Erro: Email inválido.");
@@ -39,5 +40,5 @@ if ($funcionarioRepo->cadastrarFuncionario($novoFuncionario)) {
 } else {
     echo "Erro ao cadastrar funcionário.";
 }
-header("Location: ../frontend/cadastros.html");
+header("Location: ../frontend/pages/cadastros.html");
 exit();

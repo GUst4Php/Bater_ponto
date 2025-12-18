@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edições</title>
+    <link rel="stylesheet" href="../style/editar_func.css">
+    <link rel="icon" type="image/png" href="../img/nexu_icon.png">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#" id="opc-atual">Funcionários</a></li>
+                <li><a href="#">Relatorios</a></li>
+                <li><a href="#">Funcionalidades</a></li>
+                <li><a href="#">Pontos</a></li>
+            </ul>
+        </nav>
+    </header>
+        <section>
+            <div class="opcoes-funcionarios">
+                 <script src="../js/opcoes_func.js"></script>
+                <ul>
+                    <li><button id="cadastro">Cadastros</button></li>
+                    <li><button id="editar_func">Edições</button></li>
+                    <li><button id="get_func">Buscar</button></li>
+                </ul>
+            </div>
+    
+    <div id="edit_func">
+        <h1>Editar dados de Usuário</h1>
+        <div id="edit_form">
+            <form action="/backend/edit_func.php" method="post" id="editar_func">
+                <label for="search"></label>
+                <input type="search" name="id_func" id="search">
+
+            </form>
+            
+        </div>
+
+    </div>
+</body>
+</html>

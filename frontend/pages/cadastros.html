@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/img/nexu-logo.jpeg" type="image/jpeg">
-    <link rel="stylesheet" href="funcionarios.css">
+    <link rel="icon" type="image/png" href="../img/nexu_icon.png">
+    <link rel="stylesheet" href="../style/cadastros.css">
     <title>Funcionarios</title>
 </head>
 <body>
@@ -20,20 +20,24 @@
     </header>
         <section>
             <div class="opcoes-funcionarios">
+                 <script src="../js/opcoes_func.js"></script>
                 <ul>
                     <li><button id="cadastro">Cadastros</button></li>
                     <li><button id="editar_func">Edições</button></li>
-                    <li><button>Pesquisar</button></li>
+                    <li><button id="get_func">Buscar</button></li>
                 </ul>
             </div>
             <div id="cadastro-funcionarios">
                 <br><br>
-                <form action="../backend/cadastro_func.php" method="post" id="formulario">
+                <form action="../../backend/cadastro_func.php" method="post" id="formulario">
 
                     <h1>Cadastros de Funcionários</h1>
                     <br><br>
                     <label for="nome"></label>
                     <input type="text" id="nome" name="nome" placeholder="Nome Completo" required>
+                    <br><br>
+                    <label for="cpf"></label>
+                    <input type="text" name="cpf" id="cpf" placeholder="000.000.000-00" required>
                     <br><br>
                     <label for="email"></label>
                     <input type="email" id="email" name="email" placeholder="exemplo@gmail.com" required>
@@ -65,6 +69,6 @@
                 </form>
             </div>
         </section>
-    <script src="cadastro.js"></script>
+   
 </body>
 </html>
